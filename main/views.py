@@ -4,7 +4,7 @@ from .serializers import BooksSerializer
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters.rest_framework import DjangoFilterBackend # type: ignore
 from rest_framework import  filters ,status
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import BooksSerializer,DeleteBookDetailSerializer ,UpdateBookDetailSerializer
