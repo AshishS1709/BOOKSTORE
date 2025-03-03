@@ -50,11 +50,8 @@ class BookDetailUpdateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class BookDetailDeleteView(APIView):
-    queryset = Book.objects.all()
-    serializer_class = DeleteBookDetailSerializer
-    def destroy(self, request, *args, **kwargs):
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response({"message": "Book delete successfully"}, status=status.HTTP_204_NO_CONTENT)
-        
+    def delete(self, request, pk, format=None):
+        book = get_object_or_404(Book, pk=pk)
+        book.delete()
+        return Response({"message": "Book deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
     
